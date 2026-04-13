@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 const s3Client = new S3Client({
-  region: "ap-south-1",
+  region: "eu-north-1",
   credentials: {
     accessKeyId: process.env.ACCESS_KEY,
     secretAccessKey: process.env.SECRET_ACCESS_KEY,
@@ -24,7 +24,7 @@ export const putObject = async (req, res) => {
       throw new Error("Please provide the fileName and contentType ");
     }
     const command = new PutObjectCommand({
-      Bucket: "trekies",
+      Bucket: "trekies-anshu",
       Key: `uploads/${fileName}`,
       ContentType: contentType,
     });
