@@ -29,6 +29,7 @@ import { cloneTour } from "./controllers/clone.controler.js";
 import { checkAdminRole } from "./middleware/checkAdminRole.js";
 import adminRouter from './router/auth.js'
 import FAQRouter from './router/faq.router.js';
+import { errorHandler } from './middleware/errorHandler.js';
 const app = express();
 app.use(express.json());
 
@@ -78,4 +79,13 @@ app.use("/api/transport" , transportRouter) ;
 app.use("/api/board",boardingPointRouter)
 app.use("/api/allocatedTransport" , allocatedTransportRouter) ; 
 app.use("/api/faq", FAQRouter);
+
+// 404 handler — must come after all routes
+app.use((req, res) => {
+  res.status(404).json({ success: false, message: "Route not found" });
+});
+
+// Global error handler — must be the last middleware
+app.use(errorHandler);
+
 export { app };
