@@ -1,6 +1,5 @@
 # Node.js specific files/folders
 node_modules/
-.env
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -28,3 +27,4 @@ build/
 # Other files
 *.swp
 *.swo
+config.bat
