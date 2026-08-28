@@ -15,7 +15,6 @@ export const createTour = async (req, res) => {
 // Get all tours with pagination
 export const getAllTours = async (req, res) => {
   try {
-       console.log( await Tour.find())
 
      let  {status } = req.query ; 
 
@@ -27,7 +26,6 @@ export const getAllTours = async (req, res) => {
      } else if (status==="Active") {
        status = true 
      } 
-    console.log(status)
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const pipeline = [
@@ -197,12 +195,10 @@ export const updateTour = async (req, res) => {
     if (!id) {
       return res.status(400).json("Please provoid  id ");
     }
-    console.log(id);
-    const updatedExpanse = await Tour.findByIdAndUpdate(id, update, {
+    const updatedTour = await Tour.findByIdAndUpdate(id, update, {
       new: true,
     });
-    console.log(updatedExpanse);
-    return res.status(200).json(updatedExpanse);
+    return res.status(200).json(updatedTour);
   } catch (error) {
     return res.status(500).json(error?.message);
   }

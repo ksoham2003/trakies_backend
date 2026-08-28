@@ -99,13 +99,8 @@ export const signin = async (req, res) => {
 
 
 
-export const logout = () => {
-  console.log("Logout is processing");
-};
 export const makeProfile = async (req, res) => {
-  const data = req.body;
-  console.log(data);
-  res.json("working fine");
+  res.status(501).json({ message: "Not implemented" });
 };
 
 export const createUserProfile = async (req, res) => {
@@ -146,7 +141,6 @@ export const createUserProfile = async (req, res) => {
 export const getUserProfile = async (req, res) => {
   const email = req.headers.email;
   try {
-    console.log(email);
     const userProfile = await UserProfile.findOne({ email });
     if (!userProfile) {
       return res.status(404).json({ error: "User profile not found" });
